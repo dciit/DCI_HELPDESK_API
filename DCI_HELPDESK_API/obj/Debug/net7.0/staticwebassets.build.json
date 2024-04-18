@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bDCD7ig6GImnH4mZirm+5b1lTHSmUp36irHDiBKl414=",
+  "Source": "DCI_HELPDESK_API",
+  "BasePath": "_content/DCI_HELPDESK_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
