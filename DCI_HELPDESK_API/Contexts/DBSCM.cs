@@ -30,81 +30,79 @@ public partial class DBSCM : DbContext
 
         modelBuilder.Entity<HelpdeskDict>(entity =>
         {
-            entity.HasKey(e => new { e.HdId, e.HdCategory, e.HdCode });
+            entity.HasKey(e => new { e.DictId, e.DictCategory, e.DictCode });
 
             entity.ToTable("HELPDESK_DICT");
 
-            entity.Property(e => e.HdId)
+            entity.Property(e => e.DictId)
                 .ValueGeneratedOnAdd()
-                .HasColumnName("HD_ID");
-            entity.Property(e => e.HdCategory)
+                .HasColumnName("DICT_ID");
+            entity.Property(e => e.DictCategory)
                 .HasMaxLength(20)
-                .HasColumnName("HD_CATEGORY");
-            entity.Property(e => e.HdCode)
+                .HasColumnName("DICT_CATEGORY");
+            entity.Property(e => e.DictCode)
                 .HasMaxLength(50)
-                .HasColumnName("HD_CODE");
-            entity.Property(e => e.HdActive)
+                .HasColumnName("DICT_CODE");
+            entity.Property(e => e.DictActive)
                 .IsRequired()
                 .HasDefaultValueSql("((1))")
                 .HasComment("1 = ใช้งาน, 0 = ไม่ใช้งาน")
-                .HasColumnName("HD_ACTIVE");
-            entity.Property(e => e.HdCreateBy)
+                .HasColumnName("DICT_ACTIVE");
+            entity.Property(e => e.DictCreateBy)
                 .HasMaxLength(20)
-                .HasColumnName("HD_CREATE_BY");
-            entity.Property(e => e.HdCreateDate)
+                .HasColumnName("DICT_CREATE_BY");
+            entity.Property(e => e.DictCreateDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("HD_CREATE_DATE");
-            entity.Property(e => e.HdDesc)
+                .HasColumnName("DICT_CREATE_DATE");
+            entity.Property(e => e.DictDesc)
                 .HasMaxLength(50)
-                .HasColumnName("HD_DESC");
-            entity.Property(e => e.HdIndex).HasColumnName("HD_INDEX");
-            entity.Property(e => e.HdRatio)
-                .HasDefaultValueSql("((1))")
-                .HasColumnName("HD_RATIO");
-            entity.Property(e => e.HdRef)
+                .HasColumnName("DICT_DESC");
+            entity.Property(e => e.DictIndex).HasColumnName("DICT_INDEX");
+            entity.Property(e => e.DictRatio)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("DICT_RATIO");
+            entity.Property(e => e.DictRef)
                 .HasMaxLength(50)
-                .HasColumnName("HD_REF");
-            entity.Property(e => e.HdTitle)
+                .HasColumnName("DICT_REF");
+            entity.Property(e => e.DictTitle)
                 .HasMaxLength(50)
-                .HasColumnName("HD_TITLE");
-            entity.Property(e => e.HdUpdateBy)
+                .HasColumnName("DICT_TITLE");
+            entity.Property(e => e.DictUpdateBy)
                 .HasMaxLength(20)
-                .HasColumnName("HD_UPDATE_BY");
-            entity.Property(e => e.HdUpdateDate)
+                .HasColumnName("DICT_UPDATE_BY");
+            entity.Property(e => e.DictUpdateDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("HD_UPDATE_DATE");
+                .HasColumnName("DICT_UPDATE_DATE");
         });
 
         modelBuilder.Entity<HelpdeskJob>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("HELPDESK_JOB");
+            entity.HasKey(e => e.JobId);
 
+            entity.ToTable("HELPDESK_JOB");
+
+            entity.Property(e => e.JobId).HasColumnName("JOB_ID");
             entity.Property(e => e.HdCode)
                 .HasMaxLength(20)
                 .HasColumnName("HD_CODE");
-            entity.Property(e => e.JobCloseDate)
-                .HasColumnType("datetime")
-                .HasColumnName("JOB_CLOSE_DATE");
-            entity.Property(e => e.JobFac).HasColumnName("JOB_FAC");
-            entity.Property(e => e.JobHolder)
+            entity.Property(e => e.JobAcceptBy)
                 .HasMaxLength(5)
-                .HasColumnName("JOB_HOLDER");
-            entity.Property(e => e.JobId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("JOB_ID");
+                .HasColumnName("JOB_ACCEPT_BY");
+            entity.Property(e => e.JobAcceptDate)
+                .HasColumnType("datetime")
+                .HasColumnName("JOB_ACCEPT_DATE");
+            entity.Property(e => e.JobDesc)
+                .HasColumnType("text")
+                .HasColumnName("JOB_DESC");
+            entity.Property(e => e.JobFac).HasColumnName("JOB_FAC");
+            entity.Property(e => e.JobFinishDate)
+                .HasColumnType("datetime")
+                .HasColumnName("JOB_FINISH_DATE");
             entity.Property(e => e.JobLocation)
                 .HasMaxLength(20)
                 .HasColumnName("JOB_LOCATION");
-            entity.Property(e => e.JobReceivedBy)
-                .HasMaxLength(5)
-                .HasColumnName("JOB_RECEIVED_BY");
-            entity.Property(e => e.JobReceivedDate)
-                .HasColumnType("datetime")
-                .HasColumnName("JOB_RECEIVED_DATE");
             entity.Property(e => e.JobReqBy)
                 .HasMaxLength(5)
                 .HasColumnName("JOB_REQ_BY");

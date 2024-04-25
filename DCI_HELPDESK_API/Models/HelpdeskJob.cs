@@ -9,8 +9,6 @@ public partial class HelpdeskJob
 
     public string HdCode { get; set; } = null!;
 
-    public string? JobHolder { get; set; }
-
     public int? JobFac { get; set; }
 
     public string? JobLocation { get; set; }
@@ -19,11 +17,13 @@ public partial class HelpdeskJob
 
     public DateTime? JobReqDate { get; set; }
 
-    public string? JobReceivedBy { get; set; }
+    public string? JobDesc { get; set; }
 
-    public DateTime? JobReceivedDate { get; set; }
+    public string? JobAcceptBy { get; set; }
 
-    public DateTime? JobCloseDate { get; set; }
+    public DateTime? JobAcceptDate { get; set; }
+
+    public DateTime? JobFinishDate { get; set; }
 
     public string? JobStatus { get; set; }
 
